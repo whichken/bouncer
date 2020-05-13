@@ -1,6 +1,9 @@
 import express from 'express'
 import consola from 'consola'
 import { Nuxt, Builder } from 'nuxt'
+
+import { register } from './auth'
+
 const app = express()
 
 // Import and Set Nuxt.js options
@@ -19,6 +22,12 @@ async function start() {
     const builder = new Builder(nuxt)
     await builder.build()
   }
+
+  // Register needed middleware
+  app.use(express.json())
+
+  // Register routes
+  register(app)
 
   // Give nuxt middleware to express
   app.use(nuxt.render)
