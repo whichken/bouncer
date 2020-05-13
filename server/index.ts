@@ -1,6 +1,6 @@
-const express = require('express')
-const consola = require('consola')
-const { Nuxt, Builder } = require('nuxt')
+import express from 'express'
+import consola from 'consola'
+import { Nuxt, Builder } from 'nuxt'
 const app = express()
 
 // Import and Set Nuxt.js options
