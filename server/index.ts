@@ -2,6 +2,9 @@ import express from 'express'
 import consola from 'consola'
 import { Nuxt, Builder } from 'nuxt'
 import { createConnection } from 'typeorm'
+
+import { register } from './auth'
+
 const app = express()
 
 // Import and Set Nuxt.js options
@@ -16,6 +19,12 @@ createConnection()
     const nuxt = new Nuxt(config)
 
     const { host, port } = nuxt.options.server
+
+    // Register needed middleware
+    app.use(express.json())
+
+    // Register routes
+    register(app)
 
     await nuxt.ready()
     // Build only in dev mode
