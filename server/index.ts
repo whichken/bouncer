@@ -3,7 +3,7 @@ import consola from 'consola'
 import { Nuxt, Builder } from 'nuxt'
 import { createConnection } from 'typeorm'
 
-import { register } from './auth'
+import { register } from './routes/auth'
 
 const app = express()
 
